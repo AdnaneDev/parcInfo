@@ -1,0 +1,324 @@
+
+
+.home-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 50px;
+}
+.box_cate {
+    margin-left: 410px;
+    background-color: #191C24;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto; /* Centre le tableau horizontalement */
+    max-width: 100%; /* Empêche le tableau de dépasser la largeur de la boîte */
+    overflow: auto; /* Ajoute une barre de défilement horizontale si le tableau est trop large */
+}
+.box_cate td button {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style pour le tableau */
+#myDataTable {
+    width: 100%; /* Utilise 100% de la largeur de la boîte parente */
+    border-collapse: collapse; /* Fusionne les bordures des cellules */
+    color: #fff;
+     /* Couleur du texte */
+}
+/* Personnalisation du champ "Show" de DataTables */
+#myDataTable_length {
+  
+    padding: 10px; /* Espace intérieur */
+}
+
+/* Style du champ "Show" de DataTables */
+#myDataTable_length label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right:10px;
+  
+     /* Marge à droite pour l'espacement */
+}
+
+/* Style du menu déroulant de sélection dans le champ "Show" */
+#myDataTable_length select {
+    background-color: #333; /* Fond du menu sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 60px; /* Largeur du menu déroulant */
+}
+
+#myDataTable_filter {
+  
+    padding: 10px; /* Espace intérieur */
+}
+#myDataTable_filter input[type="search"] {
+    background-color: #333; /* Fond du champ de recherche sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 200px; /* Largeur du champ de recherche */
+    margin-right: 10px; /* Marge à droite pour l'espacement */
+}
+#myDataTable_filter label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right: 5px; /* Marge à droite pour l'espacement */
+}
+
+/* Style pour l'en-tête du tableau */
+#myDataTable thead {
+    background-color: #222; /* Fond sombre pour l'en-tête */
+    color: #007bff; /* Couleur du texte en blanc */
+}
+/* Style pour les cellules de l'en-tête */
+#myDataTable th {
+    padding: 10px;
+}
+
+/* Style pour les lignes du tableau */
+#myDataTable tbody tr {
+    background-color: black; /* Couleur de fond des lignes */
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+/* Style pour les cellules du tableau */
+#myDataTable td {
+    padding: 10px;
+}
+#myDataTable th,
+#myDataTable td {
+    width: calc(100% / 3); /* Répartit également la largeur sur les 11 colonnes */
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+    overflow: hidden; /* Masque le texte dépassant de la colonne */
+    text-overflow: ellipsis; /* Affiche "..." pour le texte coupé */
+}
+#myDataTable th:nth-child(2),
+#myDataTable th:nth-child(3),
+#myDataTable td:nth-child(2),
+#myDataTable td:nth-child(3) {
+    width: 20px; /* Set the width to make them smaller */
+    text-align: center; /* Center-align the content */
+}
+
+/* Style for the icons inside the "Modifier" and "Supprimer" columns */
+#myDataTable td a i {
+    font-size: 20px; /* Adjust the icon size as needed */
+    margin-right: 5px;
+}
+
+/* Style for the "Supprimer" button */
+#myDataTable .trash button {
+    background-color: transparent;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Style for the "Supprimer" icon */
+#myDataTable .trash button i {
+    font-size: 16px; /* Adjust the icon size for the "Supprimer" column */
+}
+
+#myDataTable td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Style pour l'icône "Modifier" */
+#myDataTable td a i {
+    font-size: 20px;
+    margin-right: 5px;
+    color: red;
+}
+
+/* Style pour le bouton "Supprimer" */
+#myDataTable .trash button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Style pour l'icône "Supprimer" */
+#myDataTable .trash button i {
+    font-size: 20px;
+}
+
+/* Hover sur les lignes du tableau */
+#myDataTable tbody tr:hover {
+    background-color: #555; /* Couleur de fond lorsqu'on survole */
+}
+/* Style pour les boutons */
+.buttons {
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: 9%;
+}
+.box-add3 {
+    border: 1px solid;
+    position: absolute;
+    max-height: 60%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    left: 45%;
+    top: -55%;
+    background: #191C24;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    visibility: hidden;
+  transition: transform 0.3s,top 0.4s ;
+}
+.open{
+    top: 34%;
+ 
+    visibility: visible;
+    position: absolute;
+ 
+    z-index: 1000; /* Assurez-vous que le popup est au-dessus du reste du contenu */
+    background-color: #1e1e1e; /* Fond sombre */
+    color: #ffffff; /* Texte en blanc */
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+    }
+    .entete_facture {
+        background-color: #1e1e1e; /* Fond sombre */
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        overflow: auto;
+    }
+    
+    /* Style pour les étiquettes (labels) */
+    .box-add3 label {
+        color: #fff; /* Couleur du texte en blanc */
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    
+    .box-add3 select {
+        background-color: #333; 
+        color: #fff; 
+        border: 1px solid #555; /* Bordure de 1 pixel solide en gris plus foncé */
+        border-radius: 5px; 
+        padding: 5px; 
+        min-width: 150px; /* Largeur minimale des sélecteurs pour éviter le rétrécissement excessif */
+    }
+    .box-add3 input {
+        background-color: #333; 
+        color: #fff; 
+        border: 1px solid #555; /* Bordure de 1 pixel solide en gris plus foncé */
+        border-radius: 5px; 
+        padding: 5px; 
+        min-width: 150px; /* Largeur minimale des sélecteurs pour éviter le rétrécissement excessif */
+    }
+    
+
+    .box-add3 table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    
+    }
+    
+ 
+    .box-add3 th, .box-add3 td {
+        padding: 10px;
+        text-align: center;
+        background-color: black;
+    }
+    
+  
+    .box-add3 .add_facture_button {
+        background-color: #FD6500;
+        color: #fff; 
+        border: none;
+        border-radius: 5px; 
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+  
+    .box-add3 tfoot td {
+        font-weight: bold;
+    }
+    
+    /* Style pour le conteneur de montant payé */
+    #paid_amount_container {
+        margin-top: 20px;
+    }
+    
+    /* Style pour le bouton de soumission */
+    .box-add3 button[type="submit"] {
+        background-color: #FD6500; /* Couleur de fond bleue pour le bouton de soumission */
+        color: #fff; /* Couleur du texte en blanc */
+        border: none;
+        border-radius: 5px; /* Coins arrondis */
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    
+    .popup h2,
+.popup label,
+.popup input,
+.popup select,
+.popup button,
+.popup .alert {
+    color: #ffffff;
+}
+.popup button{
+    background-color:#FD6500 ;
+}
+#closePopupButton {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    background: transparent;
+    width: auto; 
+    height: auto; 
+    cursor: pointer;
+    font-size: 22px;
+    color: #ffffff;
+    border: none;
+}
+
+#closePopupButton:hover {
+    font-size: 18px;
+    color: #ff0000; 
+}
+.btn-add{
+    background-color: #FD6500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius:5px ;
+    margin-left: 45%;
+    transition: All .3s ease;
+}
+.center-button {
+    text-align: center; /* Centre le contenu horizontalement dans la cellule */
+}
+.buttons {
+    display: flex;
+    justify-content: flex-start; 
+    margin-bottom: 20px;
+    margin-top: 9%;
+}
+
+
+

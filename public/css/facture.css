@@ -1,0 +1,863 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+/* Styles pour le popup de détails de la facture */
+/* Styles pour le popup de détails de la facture */
+#detailsPopup {
+    display: none;
+    position: fixed;
+    top: 70;
+    left: 50;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow: auto;
+}
+
+.detailsContent {
+   
+    background-color: #333; 
+    margin-top: 8%;
+ margin-left: 34%;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+/* Styles pour les détails de la facture */
+.detailsContent h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.detailsContent p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Styles pour le bouton d'impression et le bouton de fermeture */
+.printButton,
+.closeDetailsButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.productTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.productTable th,
+.productTable td {
+    border: 1px solid #555; /* Bordures grises */
+    padding: 10px;
+    text-align: left;
+}
+
+/* Boutons */
+.printButton,
+.closeDetailsButton {
+    background-color: #fd6500; /* Boutons en orange */
+    color: #fff; /* Texte en blanc */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.printButton:hover,
+.closeDetailsButton:hover {
+    background-color: #ff9d4f; /* Couleur d'hover légèrement plus claire */
+}
+
+/*------------------------------------------------------*/
+.filtration {
+    margin-top: 7%;
+    background-color: #191C24; 
+    padding: 20px; 
+    border: 1px solid #333; 
+    border-radius: 5px; 
+    color: #fff; 
+    font-size: 16px; /* Taille de la police */
+    display: flex; /* Utilisation de Flexbox */
+    justify-content: space-between; /* Espacement égal entre les éléments */
+    align-items: center; /* Alignement vertical au centre */
+    margin-bottom: 20px; 
+   
+}
+/* Style pour la classe .tt (paire d'étiquettes et de sélecteurs) */
+.tt {
+    display: flex; /* Utilisation de flexbox pour aligner les éléments en ligne */
+    flex-direction: column; /* Les éléments sont empilés verticalement */
+    margin-bottom: 20px;
+    margin-right: 12px; /* Espacement entre chaque paire */
+    width: 100%; /* Utiliser toute la largeur disponible */
+}
+
+/* Style pour les étiquettes (labels) */
+.tt label {
+    font-weight: bold; /* Texte en gras */
+    margin-bottom: 5px; /* Espacement en bas */
+}
+
+/* Style pour les sélecteurs (selects) */
+.tt select {
+    background-color: #333; /* Fond sombre pour les sélecteurs */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #555; /* Bordure de 1 pixel solide en gris plus foncé */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espacement interne */
+    min-width: 140px; /* Largeur minimale des sélecteurs pour éviter le rétrécissement excessif */
+}
+
+/* Style pour chaque label/select groupé */
+.filtration label,
+.filtration select {
+    margin-right: 10px;
+    align-self: flex-start;
+    font-weight: bold; /* Marge entre les labels et les selects */
+}
+
+/* Ajouter une marge à gauche pour le premier label */
+.filtration label:first-child {
+    margin-left: 0;
+}
+.filtration select {
+    background-color: #333; /* Fond sombre pour les sélecteurs */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #555; /* Bordure de 1 pixel solide en gris plus foncé */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espacement interne */
+    margin-right: 10px; /* Espacement à droite entre les sélecteurs */
+    margin-bottom: 10px; /* Espacement en bas entre les sélecteurs */
+    min-width: 150px; /* Largeur minimale des sélecteurs pour éviter le rétrécissement excessif */
+}
+
+
+.home-content {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 50px;
+}
+.box-facture {
+  
+    background-color: #191C24;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto; /* Centre le tableau horizontalement */
+    max-width: 100%; /* Empêche le tableau de dépasser la largeur de la boîte */
+    overflow: auto; /* Ajoute une barre de défilement horizontale si le tableau est trop large */
+}
+.box-facture td button {
+    display: block;
+    margin: 0 auto;
+}
+/* Styles pour les cercles colorés */
+.circle-green {
+    background-color: green; /* Couleur verte pour Payé */
+}
+
+.circle-yellow {
+    background-color: yellow; /* Couleur jaune pour Partiellement Payé */
+}
+
+.circle-red {
+    background-color: red; /* Couleur rouge pour Non Payé */
+}
+
+/* Style générique pour les cercles */
+.circle {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5px;
+}
+/* Style pour les cellules de la ligne de facture */
+.facture-cell {
+    width: 10%; /* Ajustez la largeur selon vos besoins */
+    text-align: center; /* Centrez le contenu de chaque cellule */
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+    overflow: hidden; /* Masque le contenu qui dépasse la largeur de la cellule */
+    text-overflow: ellipsis; 
+}
+
+/* Style pour les boutons de paiement désactivés */
+.disabled {
+    background-color: #ddd;
+    color: #888;
+    cursor: not-allowed;
+}
+/* Style pour le tableau */
+#myDataTable {
+    width: 100%; /* Utilise 100% de la largeur de la boîte parente */
+    border-collapse: collapse; /* Fusionne les bordures des cellules */
+    color: #fff;
+     /* Couleur du texte */
+}
+/* Personnalisation du champ "Show" de DataTables */
+#myDataTable_length {
+  
+    padding: 10px; /* Espace intérieur */
+}
+
+/* Style du champ "Show" de DataTables */
+#myDataTable_length label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right:10px;
+  
+     /* Marge à droite pour l'espacement */
+}
+
+/* Style du menu déroulant de sélection dans le champ "Show" */
+#myDataTable_length select {
+    background-color: #333; /* Fond du menu sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 60px; /* Largeur du menu déroulant */
+}
+
+#myDataTable_filter {
+  
+    padding: 10px; /* Espace intérieur */
+}
+#myDataTable_filter input[type="search"] {
+    background-color: #333; /* Fond du champ de recherche sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 200px; /* Largeur du champ de recherche */
+    margin-right: 10px; /* Marge à droite pour l'espacement */
+}
+#myDataTable_filter label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right: 5px; /* Marge à droite pour l'espacement */
+}
+
+/* Style pour l'en-tête du tableau */
+#myDataTable thead {
+    background-color: #222; /* Fond sombre pour l'en-tête */
+    color: #007bff; /* Couleur du texte en blanc */
+}
+/* Style pour les cellules de l'en-tête */
+#myDataTable th {
+    padding: 10px;
+}
+
+/* Style pour les lignes du tableau */
+#myDataTable tbody tr {
+    background-color: black; /* Couleur de fond des lignes */
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+/* Style pour les cellules du tableau */
+#myDataTable td {
+    padding: 10px;
+}
+#myDataTable th,
+#myDataTable td {
+    width: calc(90% / 9);
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+
+#myDataTable .statut-cell {
+    font-size: 12px; /* Réglez la taille de la police selon vos préférences */
+}
+
+/* Style pour le bouton "Supprimer" */
+#myDataTable .trash button {
+    width: auto; /* Supprime la largeur spécifique du bouton */
+    height: auto; /* Supprime la hauteur spécifique du bouton */
+    background-color: transparent; /* Supprime la couleur de fond */
+    border: none; /* Supprime les bordures */
+    color: #ff0019; /* Couleur du texte */
+    cursor: pointer;
+    padding: 0; /* Supprime le rembourrage */
+}
+#myDataTable tbody td:nth-child(10) {
+    text-align: center; /* Centrer horizontalement */
+    vertical-align: middle; /* Centrer verticalement */
+}
+/* Style pour les liens "Modifier" */
+#myDataTable td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Style pour l'icône "Modifier" */
+#myDataTable td a i {
+    font-size: 20px;
+    margin-right: 5px;
+    color: red;
+}
+
+/* Style pour le bouton "Supprimer" */
+#myDataTable .trash button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Style pour l'icône "Supprimer" */
+#myDataTable .trash button i {
+    font-size: 20px;
+}
+
+/* Hover sur les lignes du tableau */
+#myDataTable tbody tr:hover {
+    background-color: #555; /* Couleur de fond lorsqu'on survole */
+}
+/* Style pour les boutons */
+.buttons {
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: 9%;
+}
+.box-add3 {
+    border: 1px solid;
+    position: absolute;
+    max-height: 60%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+    left: 45%;
+    top: -55%;
+    background: #191C24;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+
+    visibility: hidden;
+  transition: transform 0.3s,top 0.4s ;
+}
+.open{
+    top: 34%;
+ 
+    visibility: visible;
+    position: absolute;
+ 
+    z-index: 1000; /* Assurez-vous que le popup est au-dessus du reste du contenu */
+    background-color: #1e1e1e; /* Fond sombre */
+    color: #ffffff; /* Texte en blanc */
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+    }
+    .entete_facture {
+        background-color: #1e1e1e; /* Fond sombre */
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        overflow: auto;
+    }
+    
+    /* Style pour les étiquettes (labels) */
+    .box-add3 label {
+        color: #fff; /* Couleur du texte en blanc */
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    /* Style pour les sélecteurs (selects) */
+    .box-add3 select {
+        background-color: #333; /* Fond sombre pour les sélecteurs */
+        color: #fff; /* Couleur du texte en blanc */
+        border: 1px solid #555; /* Bordure de 1 pixel solide en gris plus foncé */
+        border-radius: 5px; /* Coins arrondis */
+        padding: 5px; /* Espacement interne */
+        min-width: 150px; /* Largeur minimale des sélecteurs pour éviter le rétrécissement excessif */
+    }
+    .box-add3 input {
+        background-color: #333; /* Fond sombre pour les sélecteurs */
+        color: #fff; /* Couleur du texte en blanc */
+        border: 1px solid #555; /* Bordure de 1 pixel solide en gris plus foncé */
+        border-radius: 5px; /* Coins arrondis */
+        padding: 5px; /* Espacement interne */
+        min-width: 150px; /* Largeur minimale des sélecteurs pour éviter le rétrécissement excessif */
+    }
+    
+    /* Style pour les tableaux (tables) */
+    .box-add3 table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+    
+    }
+    
+    /* Style pour les cellules (th et td) du tableau */
+    .box-add3 th, .box-add3 td {
+        padding: 10px;
+        text-align: center;
+        background-color: black;
+    }
+    
+    /* Style pour le bouton "Add" */
+    .box-add3 .add_facture_button {
+        background-color: #FD6500; /* Couleur de fond bleue pour le bouton */
+        color: #fff; /* Couleur du texte en blanc */
+        border: none;
+        border-radius: 5px; /* Coins arrondis */
+        padding: 5px 10px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    
+    /* Style pour le pied de tableau (tfoot) */
+    .box-add3 tfoot td {
+        font-weight: bold;
+    }
+    
+    /* Style pour le conteneur de montant payé */
+    #paid_amount_container {
+        margin-top: 20px;
+    }
+    
+    /* Style pour le bouton de soumission */
+    .box-add3 button[type="submit"] {
+        background-color: #FD6500; /* Couleur de fond bleue pour le bouton de soumission */
+        color: #fff; /* Couleur du texte en blanc */
+        border: none;
+        border-radius: 5px; /* Coins arrondis */
+        padding: 10px 20px;
+        cursor: pointer;
+        margin-top: 20px;
+    }
+    
+    .popup h2,
+.popup label,
+.popup input,
+.popup select,
+.popup button,
+.popup .alert {
+    color: #ffffff;
+}
+.popup button{
+    background-color:#FD6500 ;
+}
+#closePopupButton {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    background: transparent;
+    width: auto; /* Supprime la largeur spécifique du bouton */
+    height: auto; /* Supprime la hauteur spécifique du bouton */
+    cursor: pointer;
+    font-size: 22px;
+    color: #ffffff;
+}
+
+/* Vous pouvez également ajouter des styles pour le bouton au survol */
+#closePopupButton:hover {
+    font-size: 18px;
+    color: #ff0000; /* Par exemple, rouge au survol */
+}
+.btn-add{
+    background-color: #FD6500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius:5px ;
+    margin-left: 45%;
+    transition: All .3s ease;
+}
+.center-button {
+    text-align: center; /* Centre le contenu horizontalement dans la cellule */
+}
+.buttons {
+    display: flex;
+    justify-content: flex-start; 
+    margin-bottom: 20px;
+    margin-top: 9%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.remove-facture-button {
+background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: -5%;
+    background-image: url(../../model/updatecommande.php);
+}
+
+.remove-facture-button:hover {
+    background-color: #e65757;
+}
+
+.facture {
+    background-color: #f1f1f1;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.facture_design {
+    display: flex;
+    flex-direction: column;
+}
+
+.entete_facture {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.entete_facture label,
+.body_form label {
+    font-weight: bold;
+}
+
+.body_form {
+    margin-bottom: 20px;
+}
+
+
+th,
+td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: black;
+    font-weight: bold;
+}
+
+
+
+#paid_amount_container {
+    display: none;
+    margin-top: 10px;
+}
+
+#paid_amount_container label,
+#paid_amount_container input {
+    display: block;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .entete_facture {
+        flex-direction: column;
+    }
+
+    .right {
+        margin-top: 10px;
+    }
+
+    .body_form table {
+        font-size: 14px;
+    }
+}
+
+#paid_amount_container {
+    display: none;
+    margin-top: 10px;
+}
+
+#paid_amount_container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#paid_amount_container input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*FOr the table display*/
+
+
+
+.box .trash button {
+    background-color: red;
+    border: none;
+    cursor: pointer;
+}
+
+.box .trash button:hover {
+    color: gray;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .box_commande {
+        font-size: 14px;
+    }
+
+    .box .bx {
+        font-size: 16px;
+    }
+}
+/* Appliquer le style aux boutons désactivés */
+.disabled {
+    background-color: #ccc; /* Gris clair */
+    color: #666; /* Couleur de texte grise */
+    cursor: not-allowed; /* Curseur en forme de "interdit" */
+    pointer-events: none;
+ 
+}
+/* Style pour le popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%; /* Position verticale au milieu de l'écran */
+    left: 50%; /* Position horizontale au milieu de l'écran */
+    transform: translate(-50%, -50%); /* Centre le popup par rapport à son propre centre */
+    width: 23%; /* Largeur du popup */
+ 
+    background-color: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+  .popup-content {
+    background-color: #191C24;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    overflow: auto;
+    position: relative;
+}
+/* Header Styles */
+.popup h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    margin-left: 2%;
+}
+
+/* Radio Button Styles */
+.popup label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 18px;
+    margin-left: 20%;
+}
+
+.popup input[type="radio"] {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+/* Input Styles */
+.popup label[for="partialAmount"] {
+    margin-top: 10px;
+}
+
+.popup input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #34495e; /* Input background color */
+    color: white; /* Input text color */
+}
+
+
+
+
+
+
+/* Button Hover Styles */
+.popup button:hover {
+    background-color: #2980b9; /* Hover background color */
+}
+  
+  .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #888;
+    cursor: pointer;
+  }
+  
+  .popup h2 {
+    margin-top: 0;
+  }
+  .popup label {
+    display: inline-block;
+    margin-right: 10px; /* Adjust as needed for spacing */
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.popup input[type="radio"] {
+    margin-right: 5px; /* Adjust as needed for spacing */
+    vertical-align: middle;
+}
+.button-container {
+    width: 12%;
+    display: flex;
+ justify-content: flex-start;
+}
+
+
+  .command-details {
+    margin-top: 20px;
+ padding-left: 14%;
+ padding-top: 10px; /* Espacement supérieur */
+ padding-bottom: 10px; /* Espacement supérieur */
+ padding-right: 10px; /* Espacement supérieur */
+
+    background-color: black; /* Couleur de fond */
+    color: #fff; /* Couleur du texte */
+    border-radius: 5px; /* Coins arrondis */
+}
+
+
+/* Style pour les titres de détails de commande */
+.command-details h3 {
+    font-size: 18px; /* Taille de police */
+    margin-bottom: 10px; /* Espacement inférieur */
+}
+
+/* Style pour les informations de détails de commande */
+.command-details p {
+    margin-bottom: 5px; /* Espacement inférieur entre les paragraphes */
+}
+  
+/* Style pour le conteneur des boutons */
+.buttonsActions {
+    display: flex; /* Utilisation de flexbox pour aligner horizontalement */
+    justify-content: center; /* Centre les éléments horizontalement */
+    margin-top: 20px; /* Marge supérieure pour espacer les boutons du contenu supérieur */
+}
+
+/* Style pour les boutons */
+.confirm-button,
+.cancel-button {
+    padding: 10px 20px; 
+    margin: 0 10px; 
+    background-color: #007bff; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+/* Style pour les boutons désactivés */
+.confirm-button.disabled {
+    background-color: #ccc; 
+    cursor: not-allowed; 
+}
+
+/* Hover sur les boutons */
+.confirm-button:hover,
+.cancel-button:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+  /* Style pour le tableau des détails de la commande */
+.details-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+/* Style pour les cellules (th et td) du tableau */
+.details-table th, .details-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd; /* Bordures légères */
+}
+
+/* Style pour le bouton de fermeture */
+#closeProductDetailsPopup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* Hover sur le bouton de fermeture */
+#closeProductDetailsPopup:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* styles.css */
+
+/* Style global */
+body {
+    font-family: Arial, sans-serif;
+  
+    margin: 0;
+    padding: 0;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style pour la boîte principale */
+.home-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 50px;
+}
+.box_fourni {
+    margin-left: 410px;
+    background-color: #191C24;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto; /* Centre le tableau horizontalement */
+    max-width: 100%; /* Empêche le tableau de dépasser la largeur de la boîte */
+    overflow: auto; /* Ajoute une barre de défilement horizontale si le tableau est trop large */
+}
+.box_fourni td button {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style pour le tableau */
+#myDataTable {
+    width: 100%; /* Utilise 100% de la largeur de la boîte parente */
+    border-collapse: collapse; /* Fusionne les bordures des cellules */
+    color: #fff;
+     /* Couleur du texte */
+}
+/* Personnalisation du champ "Show" de DataTables */
+#myDataTable_length {
+  
+    padding: 10px; /* Espace intérieur */
+}
+
+/* Style du champ "Show" de DataTables */
+#myDataTable_length label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right:10px;
+  
+     /* Marge à droite pour l'espacement */
+}
+
+/* Style du menu déroulant de sélection dans le champ "Show" */
+#myDataTable_length select {
+    background-color: #333; /* Fond du menu sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 60px; /* Largeur du menu déroulant */
+}
+
+#myDataTable_filter {
+  
+    padding: 10px; /* Espace intérieur */
+}
+#myDataTable_filter input[type="search"] {
+    background-color: #333; /* Fond du champ de recherche sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 200px; /* Largeur du champ de recherche */
+    margin-right: 10px; /* Marge à droite pour l'espacement */
+}
+#myDataTable_filter label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right: 5px; /* Marge à droite pour l'espacement */
+}
+
+/* Style pour l'en-tête du tableau */
+#myDataTable thead {
+    background-color: #222; /* Fond sombre pour l'en-tête */
+    color: #007bff; /* Couleur du texte en blanc */
+}
+/* Style pour les cellules de l'en-tête */
+#myDataTable th {
+    padding: 10px;
+}
+
+/* Style pour les lignes du tableau */
+#myDataTable tbody tr {
+    background-color: black; /* Couleur de fond des lignes */
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+/* Style pour les cellules du tableau */
+#myDataTable td {
+    padding: 10px;
+}
+#myDataTable th,
+#myDataTable td {
+    width: calc(100% / 11); /* Répartit également la largeur sur les 11 colonnes */
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+    overflow: hidden; /* Masque le texte dépassant de la colonne */
+    text-overflow: ellipsis; /* Affiche "..." pour le texte coupé */
+}
+/* Définir une largeur fixe pour toutes les colonnes de la table */
+/* Style pour la colonne "Modifier" et "Supprimer" dans l'en-tête du tableau */
+#myDataTable th:nth-child(10),
+#myDataTable th:nth-child(11) {
+    width: 30px; /* Largeur réduite pour ces colonnes */
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+}
+
+/* Style pour la colonne "Modifier" et "Supprimer" dans les cellules du tableau */
+#myDataTable td:nth-child(10),
+#myDataTable td:nth-child(11) {
+    width: 30px; /* Largeur réduite pour ces colonnes */
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+}
+/* Style pour le bouton "Supprimer" */
+#myDataTable .trash button {
+    width: auto; /* Supprime la largeur spécifique du bouton */
+    height: auto; /* Supprime la hauteur spécifique du bouton */
+    background-color: transparent; /* Supprime la couleur de fond */
+    border: none; /* Supprime les bordures */
+    color: #ff0019; /* Couleur du texte */
+    cursor: pointer;
+    padding: 0; /* Supprime le rembourrage */
+}
+#myDataTable tbody td:nth-child(10) {
+    text-align: center; /* Centrer horizontalement */
+    vertical-align: middle; /* Centrer verticalement */
+}
+/* Style pour les liens "Modifier" */
+#myDataTable td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Style pour l'icône "Modifier" */
+#myDataTable td a i {
+    font-size: 20px;
+    margin-right: 5px;
+    color: red;
+}
+
+/* Style pour le bouton "Supprimer" */
+#myDataTable .trash button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Style pour l'icône "Supprimer" */
+#myDataTable .trash button i {
+    font-size: 20px;
+}
+
+/* Hover sur les lignes du tableau */
+#myDataTable tbody tr:hover {
+    background-color: #555; /* Couleur de fond lorsqu'on survole */
+}
+/* Style pour les boutons */
+.buttons {
+    justify-content: flex-start; 
+    margin-bottom: 20px;
+    margin-top: 9%;
+}
+.box-add2 {
+    border: 1px solid;
+    position: absolute;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    left: 25%;
+    top: -55%;
+    background: #191C24;
+    padding: 15px 14px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    visibility: hidden;
+  transition: transform 0.3s,top 0.4s ;
+}
+.open{
+    top: 14%;
+    visibility: visible;
+    position: absolute;
+   
+    z-index: 1000; /* Assurez-vous que le popup est au-dessus du reste du contenu */
+    background-color: #1e1e1e; /* Fond sombre */
+    color: #ffffff; /* Texte en blanc */
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+    }
+    .popup h2,
+.popup label,
+.popup input,
+.popup select,
+.popup button,
+.popup .alert {
+    color: #ffffff;
+}
+.popup button{
+    background-color:#FD6500 ;
+}
+#closePopupButton {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    width: auto; /* Supprime la largeur spécifique du bouton */
+    height: auto; /* Supprime la hauteur spécifique du bouton */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff;
+    border: none;
+}
+
+/* Vous pouvez également ajouter des styles pour le bouton au survol */
+#closePopupButton:hover {
+    color: #ff0000; /* Par exemple, rouge au survol */
+}
+.btn-add{
+    background-color: #FD6500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius:5px ;
+    margin-left: 45%;
+    transition: All .3s ease;
+}
+.center-button {
+    text-align: center; /* Centre le contenu horizontalement dans la cellule */
+}

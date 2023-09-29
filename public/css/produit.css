@@ -1,0 +1,278 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+
+/* styles.css */
+
+/* Style global */
+body {
+    font-family: Arial, sans-serif;
+  
+    margin: 0;
+    padding: 0;
+}
+
+/* Style pour la boîte principale */
+.home-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 80px;
+}
+.box_produit {
+    background-color: #191C24;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto; /* Centre le tableau horizontalement */
+    max-width: 100%; /* Empêche le tableau de dépasser la largeur de la boîte */
+    overflow-x: auto; /* Ajoute une barre de défilement horizontale si le tableau est trop large */
+}
+.box_produit td button {
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style pour le tableau */
+#myDataTable {
+    width: 100%; /* Utilise 100% de la largeur de la boîte parente */
+    border-collapse: collapse; /* Fusionne les bordures des cellules */
+    color: #fff;
+     /* Couleur du texte */
+}
+/* Personnalisation du champ "Show" de DataTables */
+#myDataTable_length {
+  
+    padding: 10px; /* Espace intérieur */
+}
+
+/* Style du champ "Show" de DataTables */
+#myDataTable_length label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right:10px;
+  
+     /* Marge à droite pour l'espacement */
+}
+
+/* Style du menu déroulant de sélection dans le champ "Show" */
+#myDataTable_length select {
+    background-color: #333; /* Fond du menu sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 60px; /* Largeur du menu déroulant */
+}
+
+#myDataTable_filter {
+  
+    padding: 10px; /* Espace intérieur */
+}
+#myDataTable_filter input[type="search"] {
+    background-color: #333; /* Fond du champ de recherche sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    border: 1px solid #777; /* Bordure grise */
+    border-radius: 5px; /* Coins arrondis */
+    padding: 5px; /* Espace intérieur */
+    width: 200px; /* Largeur du champ de recherche */
+    margin-right: 10px; /* Marge à droite pour l'espacement */
+}
+#myDataTable_filter label {
+    color: #fff; /* Couleur du texte en blanc */
+    font-weight: bold; /* Texte en gras */
+    margin-right: 5px; /* Marge à droite pour l'espacement */
+}
+
+/* Style pour l'en-tête du tableau */
+#myDataTable thead {
+    background-color: #222; /* Fond sombre pour l'en-tête */
+    color: #007bff; /* Couleur du texte en blanc */
+}
+/* Style pour les cellules de l'en-tête */
+#myDataTable th {
+    padding: 10px;
+}
+
+/* Style pour les lignes du tableau */
+#myDataTable tbody tr {
+    background-color: black; /* Couleur de fond des lignes */
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+/* Style pour les cellules du tableau */
+#myDataTable td {
+    padding: 10px;
+}
+/* Définir une largeur fixe pour toutes les colonnes de la table */
+#myDataTable td:nth-child(5), #myDataTable td:nth-child(6),
+#myDataTable th:nth-child(5), #myDataTable th:nth-child(6) {
+    width: 60px; 
+    white-space: nowrap; /* Empêche le texte de se rompre sur plusieurs lignes */
+    overflow: hidden; /* Masque tout contenu qui dépasse la largeur définie */
+    text-overflow: ellipsis; /* Affiche des points de suspension (...) pour le texte dépassant */
+}
+/* Style pour les liens "Modifier" */
+#myDataTable td a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Style pour l'icône "Modifier" */
+#myDataTable td a i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+/* Style pour le bouton "Supprimer" */
+#myDataTable .trash button {
+    background-color: transparent;
+    border: none;
+    color: red;
+    cursor: pointer;
+    padding: 0;
+}
+
+/* Style pour l'icône "Supprimer" */
+#myDataTable .trash button i {
+    font-size: 20px;
+}
+
+/* Hover sur les lignes du tableau */
+#myDataTable tbody tr:hover {
+    background-color: #555; /* Couleur de fond lorsqu'on survole */
+}
+/* Style pour les boutons */
+.buttons {
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: 2%;
+}
+
+.box-add1 {
+    border: 1px solid;
+    position: absolute;
+    left: 25%;
+    top: -75%;
+    background: #191C24;
+    padding: 15px 14px;
+    border-radius: 12px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    visibility: hidden;
+  transition: transform 0.3s,top 0.4s ;
+}
+.open{
+    top: 20%;
+    visibility: visible;
+    position: absolute;
+   
+    z-index: 1000; /* Assurez-vous que le popup est au-dessus du reste du contenu */
+    background-color: #1e1e1e; /* Fond sombre */
+    color: #ffffff; /* Texte en blanc */
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    
+    }
+    .popup h2,
+.popup label,
+.popup input,
+.popup select,
+.popup button,
+.popup .alert {
+    color: #ffffff;
+}
+#closePopupButton {
+    position: absolute;
+    top: 5px;
+    right: 0px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #ffffff; 
+    width: auto; /* Supprime la largeur spécifique du bouton */
+    height: auto; /* Supprime la hauteur spécifique du bouton */
+}
+
+/* Vous pouvez également ajouter des styles pour le bouton au survol */
+#closePopupButton:hover {
+    color: #ff0000; /* Par exemple, rouge au survol */
+}
+.btn-add{
+    background-color: #FD6500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius:5px ;
+    margin-left: 45%;
+    transition: All .3s ease;
+}
+.center-button {
+    text-align: center; /* Centre le contenu horizontalement dans la cellule */
+}
+
+/* Styles pour le conteneur de popup */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond sombre semi-transparent */
+    z-index: 999; /* Assurez-vous que le popup apparaît au-dessus de tout le reste */
+}
+
+/* Styles pour le contenu du popup */
+.popup-content1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #333; /* Couleur de fond sombre */
+    color: #fff; /* Couleur du texte en blanc */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Ombre légère */
+}
+.popup-content button {
+    display: inline-block; /* Affiche les boutons en ligne */
+    margin-right: 10px; /* Ajoute un espace entre les boutons (ajustez selon vos préférences) */
+}
+.y{
+    text-align: center;
+}
+/* Styles pour le titre du popup */
+.popup-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Styles pour les étiquettes et les boutons */
+.popup-content label,
+.popup-content button {
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Styles pour le bouton "Annuler" */
+#cancelImportButton {
+    background-color: #ff3333; /* Couleur de fond rouge pour le bouton Annuler */
+    color: #fff; /* Couleur du texte en blanc */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Styles pour le bouton "Importer" */
+#cancelImportButton:hover {
+    background-color: #ff0000; /* Couleur de fond rouge plus foncé au survol */
+}
